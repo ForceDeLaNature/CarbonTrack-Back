@@ -1,6 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
 const { distancematrix } = require("../../service/api_google");
-const { log } = require("node:console");
 
 const getDistance = async (req, res) => {
   try {
@@ -18,7 +17,7 @@ const getDistance = async (req, res) => {
     };
     const key = process.env.SECRET_KEY;
     const response = await distancematrix(body, key);
-    res.status(StatusCodes.OK).json(response.data);
+    res.status(StatusCodes.OK).json(response);
   } catch (error) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
