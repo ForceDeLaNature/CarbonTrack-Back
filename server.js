@@ -7,7 +7,7 @@ const routeGetCarbonne = require('./src/routes/transport.router');
 const path = require("path");
 require("dotenv").config();
 
-const hostname = process.env.HOST || "127.0.0.1";
+const hostname = process.env.HOST || "0.0.0.0";
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -29,6 +29,6 @@ app.use("/api/getDistance", getDistance);
 app.use('/api/getCarbonne', routeGetCarbonne);
 
 
-server.listen(port, hostname, () => {
+server.listen(port,hostname, () => {
   console.log(`Server running at http://${hostname}:${port}`);
 });
