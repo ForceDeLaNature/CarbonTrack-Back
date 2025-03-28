@@ -1,11 +1,11 @@
-const distancematrix = async (body, Key) => {
+const distancematrix = async (body) => {
   const { origins, destinations } = body;  // On extrait les origines et destinations du body
-
+  const key = "AIzaSyB_apjCwRqg1uErwO0eoh9vUSWjq0oRHpM";
   // Construire l'URL avec les paramètres nécessaires
   const url = new URL('https://maps.googleapis.com/maps/api/distancematrix/json');
   url.searchParams.append('origins', origins);
   url.searchParams.append('destinations', destinations);
-  url.searchParams.append('key', Key);
+  url.searchParams.append('key', key);
 
   try {
     const response = await fetch(url, {
