@@ -16,7 +16,7 @@ const getDistance = async (req, res) => {
       destinations: destination,
     };
     const key = process.env.SECRET_KEY;
-    const response = await distancematrix(body, key);
+    const response = await distancematrix(body);
     res.status(StatusCodes.OK).json(response);
   } catch (error) {
     res
