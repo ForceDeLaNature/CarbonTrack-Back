@@ -29,5 +29,31 @@ const distancematrix = async (body, Key) => {
     console.error('Erreur lors de la récupération des données:', error);
   }
 };
+const distancematrixt = async (distance,transport) => {
+      // On extrait les origines et destinations du body
+    
+      const BASE_URL = 'https://impactco2.fr/api/v1/transport';
+      
+      const urlWithParams = `${BASE_URL}?km=${distance}&transports=${transport}`;
+      console.log(`Appel API : ${urlWithParams}`);
+      
+      
+      const response = await fetch(urlWithParams, {
+        method: 'GET',  // Utilisez GET sans corps de requête
+        headers: {
+          'User-Agent': 'undici-stream-example',
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+      const data = await response.json();
+      console.log('La réponse est:', data);
+      return data;
+  };
+  
 
-module.exports = { distancematrix };
+module.exports = { distancematrix,distancematrixt };
